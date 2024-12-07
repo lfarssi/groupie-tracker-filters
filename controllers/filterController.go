@@ -6,29 +6,17 @@ import (
 	"time"
 )
 
-func filter(artists []models.Artist, minMembers string, maxMembers string, location string, creationDateFrom string, creationDateTo string, albumDateFrom string, albumDateTo string) ([]models.Artist, error) {
+func filter(artists []models.Artist, members string,  location string, creationDateFrom string, creationDateTo string, albumDateFrom string, albumDateTo string) ([]models.Artist, error) {
 	var filtered []models.Artist
 	for _, artist := range artists {
-		if len(minMembers) > 0 {
-			min, err := strconv.Atoi(minMembers)
+		if len(members) > 0 {
+			members, err := strconv.Atoi(members)
 			if err != nil {
 				return nil, err
 			}
-				if len(artist.Members) < min {
-					continue
+			if len(artist.Members) != members {
+				continue
 			}
-			
-		}
-		if len(maxMembers) > 0 {
-			max, err := strconv.Atoi(maxMembers)
-			if err != nil {
-				return nil, err
-			}
-				if len(artist.Members) > max {
-					continue
-				
-			}
-		
 		}
 		if len(location) > 0 {
 			for _, location := range artist.Locationsr {

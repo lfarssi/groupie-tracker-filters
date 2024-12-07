@@ -24,15 +24,14 @@ func ArtistController(w http.ResponseWriter, r *http.Request) {
 		
 	}
 	search := r.URL.Query().Get("search")
-	minMembers := r.URL.Query().Get("min_members")
-    maxMembers := r.URL.Query().Get("max_members")
+	members := r.URL.Query().Get("members")
     location := r.URL.Query().Get("location")
     creationDateFrom := r.URL.Query().Get("creation_date_from")
     creationDateTo := r.URL.Query().Get("creation_date_to")
     albumDateFrom := r.URL.Query().Get("album_date_from")
     albumDateTo := r.URL.Query().Get("album_date_to")
-	if len(minMembers) > 0 || len(maxMembers) > 0 || len(location) > 0 || len(creationDateFrom) > 0 || len(creationDateTo) > 0 || len(albumDateFrom) > 0 || len(albumDateTo) > 0 {
-		data, _ := filter(artists, minMembers, maxMembers, location, creationDateFrom, creationDateTo, albumDateFrom, albumDateTo)
+	if len(members) > 0  || len(location) > 0 || len(creationDateFrom) > 0 || len(creationDateTo) > 0 || len(albumDateFrom) > 0 || len(albumDateTo) > 0 {
+		data, _ := filter(artists, members, location, creationDateFrom, creationDateTo, albumDateFrom, albumDateTo)
 
 		res, err1 := template.ParseFiles("views/index.html")
 		if err1 != nil {
