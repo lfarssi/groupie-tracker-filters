@@ -19,44 +19,55 @@
       </div>
       <div>
         <form action="/" id="filterForm" method="GET">
-          <label for="member">members</label>
-          <input type="checkbox" title="member" name="member" class="members" value="1" />1
-          <input type="checkbox" title="member" name="member" class="members" value="2" />2
-          <input type="checkbox" title="member" name="member" class="members" value="3" />3
-          <input type="checkbox" title="member" name="member" class="members" value="4" />4
-          <input type="checkbox" title="member" name="member" class="members" value="5" />5
-          <input type="checkbox" title="member" name="member" class="members" value="6" />6
-          <input type="checkbox" title="member" name="member" class="members" value="7" />7
-          <input type="checkbox" title="member" name="member" class="members" value="8" />8
-          <br>  
+          <div>
+            <label for="member">members</label>
+            <input type="checkbox" title="member" name="member" class="members" value="1" />1
+            <input type="checkbox" title="member" name="member" class="members" value="2" />2
+            <input type="checkbox" title="member" name="member" class="members" value="3" />3
+            <input type="checkbox" title="member" name="member" class="members" value="4" />4
+            <input type="checkbox" title="member" name="member" class="members" value="5" />5
+            <input type="checkbox" title="member" name="member" class="members" value="6" />6
+            <input type="checkbox" title="member" name="member" class="members" value="7" />7
+            <input type="checkbox" title="member" name="member" class="members" value="8" />8
+            <br>  
+          </div>
 
-          <label for="album_date_from">album_date_from</label>
-          <input type="range" title="album_date_from" name="album_date_from" min="1950" value="1950" max="2024" id="album_date_from"/>
-          <span id="album_date_from_value"></span>
-          <label for="album_date_to">album date to</label>
-          <input type="range" title="album_date_to" name="album_date_to" min="1950" value="2024" max="2024" id="album_date_to"/>
-          <span id="album_date_to_value"></span>
+          <div>
+            <label for="album_date_from">album_date_from</label>
+            <input type="range" title="album_date_from" name="album_date_from" min="1950" value="1950" max="2024" id="album_date_from"/>
+            <span id="album_date_from_value"></span>
+          </div>
+          <div>
+            <label for="album_date_to">album date to</label>
+            <input type="range" title="album_date_to" name="album_date_to" min="1950" value="2024" max="2024" id="album_date_to"/>
+            <span id="album_date_to_value"></span>
+          </div>
           <br>
-          <label for="creation_date_from">creation_date_from</label>
-          <input type="range" title="creation_date_from" name="creation_date_from"  value="1950" min="1950" max="2024" id="creation_date_from"/>
-          <span id="creation_date_from_value"></span>
-          <label for="creation_date_to">creation_date_to</label>
-          <input type="range" title="creation_date_to" name="creation_date_to" min="1950" value="2024" max="2024" id="creation_date_to"/>
-          <span id="creation_date_to_value"></span>
-          <br>
-
-          <input
-            type="text"
-            id="filter"
-            name="location"
-            list="suggestions_location"
-            placeholder="filter  an artist by location"
-            
-          />
-          <datalist id="suggestions_location">
-            
-          </datalist>
-          <br>
+          <div>
+            <label for="creation_date_from">creation_date_from</label>
+            <input type="range" title="creation_date_from" name="creation_date_from"  value="1950" min="1950" max="2024" id="creation_date_from"/>
+            <span id="creation_date_from_value"></span>
+          </div>
+          <div>
+            <label for="creation_date_to">creation_date_to</label>
+            <input type="range" title="creation_date_to" name="creation_date_to" min="1950" value="2024" max="2024" id="creation_date_to"/>
+            <span id="creation_date_to_value"></span>
+            <br>
+          </div>
+          <div>
+            <input
+              type="text"
+              id="filter"
+              name="location"
+              list="suggestions_location"
+              placeholder="filter  an artist by location"
+              
+            />
+            <datalist id="suggestions_location">
+              
+            </datalist>
+            <br>
+          </div>
 
           <button class="filter" type="submit"><i class="fa-solid fa-filter" title="submit"></i></button>
           
@@ -99,7 +110,7 @@
             
             // Update value display when the range input is changed
             rangeElement.addEventListener('input', () => {
-              valueDisplayElement.textContent = rangeElement.value;
+              valueDisplayElement.textContent = rangeElement.value ;
             });
           };
 

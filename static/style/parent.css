@@ -193,3 +193,138 @@ html {
         padding: 30px 15px;
     }
 }
+
+#filterForm {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 20px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#filterForm:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+#filterForm label {
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#filterForm input[type="checkbox"] {
+    margin: 0 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+    accent-color: #3b82f6; /* Bright blue accent */
+}
+
+#filterForm input[type="range"] {
+    width: 100%;
+    margin: 0 5px;
+    cursor: pointer;
+    appearance: none;
+    height: 6px;
+    background: linear-gradient(to right, #3b82f6, #22d3ee);
+    border-radius: 5px;
+    outline: none;
+}
+
+#filterForm input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #3b82f6;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#filterForm input[type="range"]:hover::-webkit-slider-thumb {
+    transform: scale(1.2);
+}
+
+#filterForm span {
+    display: inline-block;
+    font-size: 14px;
+    color: #ffffff;
+    margin-top: 5px;
+    text-align: center;
+}
+
+#filterForm #filter {
+    flex: 1;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    color: #1e293b;
+    font-size: 14px;
+    outline: none;
+}
+
+#filterForm #filter:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+#filterForm .filter {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#filterForm .filter:hover {
+    background-color: #22d3ee;
+    transform: scale(1.1);
+}
+
+/* Location input and datalist */
+#filterForm #filter,
+#filterForm datalist {
+    margin: 10px 0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #3b82f6;
+    outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #filterForm {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #filterForm label {
+        text-align: left;
+    }
+
+    #filterForm input[type="range"],
+    #filterForm input[type="text"] {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    #filterForm .filter {
+        align-self: center;
+        margin-top: 15px;
+    }
+}
