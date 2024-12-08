@@ -20,26 +20,45 @@
       <div>
         <form action="/" method="GET">
           <label for="member">members</label>
-          <input type="checkbox" name="member" id="members" value="1" />1
-          <input type="checkbox" name="member" id="members" value="2" />2
-          <input type="checkbox" name="member" id="members" value="3" />3
-          <input type="checkbox" name="member" id="members" value="4" />4
-          <input type="checkbox" name="member" id="members" value="5" />5
-          <input type="checkbox" name="member" id="members" value="6" />6
-          <input type="checkbox" name="member" id="members" value="7" />7
-          <input type="checkbox" name="member" id="members" value="8" />8
+          <input type="checkbox" title="member" name="member" class="members" value="1" />1
+          <input type="checkbox" title="member" name="member" class="members" value="2" />2
+          <input type="checkbox" title="member" name="member" class="members" value="3" />3
+          <input type="checkbox" title="member" name="member" class="members" value="4" />4
+          <input type="checkbox" title="member" name="member" class="members" value="5" />5
+          <input type="checkbox" title="member" name="member" class="members" value="6" />6
+          <input type="checkbox" title="member" name="member" class="members" value="7" />7
+          <input type="checkbox" title="member" name="member" class="members" value="8" />8
           <br>  
 
           <label for="album_date_from">album_date_from</label>
-          <input type="range" name="album_date_from" >
+          <input type="range" title="album_date_from" name="album_date_from" min="1950" value="1950" max="2024" id="album_date_from"/>
+          <span id="album_date_from_value"></span>
           <label for="album_date_to">album date to</label>
-          <input type="range" name="album_date_to" >
+          <input type="range" title="album_date_to" name="album_date_to" min="1950" value="2024" max="2024" id="album_date_to"/>
+          <span id="album_date_to_value"></span>
           <br>
           <label for="creation_date_from">creation_date_from</label>
-          <input type="range" name="creation_date_from" >
+          <input type="range" title="creation_date_from" name="creation_date_from"  value="1950" min="1950" max="2024" id="creation_date_from"/>
+          <span id="creation_date_from_value"></span>
           <label for="creation_date_to">creation_date_to</label>
-          <input type="range" name="creation_date_to" >
+          <input type="range" title="creation_date_to" name="creation_date_to" min="1950" value="2024" max="2024" id="creation_date_to"/>
+          <span id="creation_date_to_value"></span>
           <br>
+
+          <input
+            type="text"
+            id="filter"
+            name="location"
+            list="suggestions_location"
+            placeholder="filter  an artist by location"
+            required
+          />
+          <datalist id="suggestions_location">
+            
+          </datalist>
+          <br>
+
+          <button class="filter" type="submit"><i class="fa-solid fa-filter" title="submit"></i></button>
           
         </form>
       </div>
@@ -55,7 +74,7 @@
           <datalist id="suggestions">
             
           </datalist>
-          <button type="submit" class="search"><i class="fa-solid fa-magnifying-glass"></i> </button>
+          <button type="submit" class="search"><i class="fa-solid fa-magnifying-glass" title="submit"></i> </button>
         </form>
    
 
@@ -74,6 +93,22 @@
       <script src="/static/js/artists.js"></script>
       <script>
         document.addEventListener("DOMContentLoaded", () => {
+          const updateRangeValue = (rangeElement, valueDisplayElement) => {
+            // Set initial value display
+            valueDisplayElement.textContent = rangeElement.value;
+            
+            // Update value display when the range input is changed
+            rangeElement.addEventListener('input', () => {
+              valueDisplayElement.textContent = rangeElement.value;
+            });
+          };
+
+          // Get each range input and its corresponding display span element
+          updateRangeValue(document.getElementById("album_date_from"), document.getElementById("album_date_from_value"));
+          updateRangeValue(document.getElementById("album_date_to"), document.getElementById("album_date_to_value"));
+          updateRangeValue(document.getElementById("creation_date_from"), document.getElementById("creation_date_from_value"));
+          updateRangeValue(document.getElementById("creation_date_to"), document.getElementById("creation_date_to_value"));
+
           const form = document.getElementById("searchForm");
           const queryString = window.location.search;
           if (queryString.includes("search=")) {

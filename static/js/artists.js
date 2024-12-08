@@ -1,5 +1,6 @@
 const artistContainer = document.getElementById("artistContainer");
 const suggestion = document.getElementById("suggestions");
+const locationSuggestion = document.getElementById("suggestions_location");
 // Get artist data from the embedded JSON script tag asynchronously
 const artistDataScript = document.getElementById("artistData");
 const artists = JSON.parse(artistDataScript.textContent);
@@ -39,6 +40,16 @@ artists.forEach((artist) => {
       suggestion.appendChild(locations);
     }
   });
+
+  artist.Locationsr.forEach((city) => {
+    if (!uniqueLocations.has(city)) {
+      uniqueLocations.add(city);
+      const locations = document.createElement("option");
+      locations.value = city;
+      locationSuggestion.appendChild(locations);
+    }
+  });
+
 
   artist.ConcertDatesr.forEach((date) => {
     if (!uniqueDates.has(date)) {

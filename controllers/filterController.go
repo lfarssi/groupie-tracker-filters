@@ -6,22 +6,32 @@ import (
 	"time"
 )
 
-func filter(artists []models.Artist, members string,  location string, creationDateFrom string, creationDateTo string, albumDateFrom string, albumDateTo string) ([]models.Artist, error) {
+func Filter(artists []models.Artist, members string,  location string, creationDateFrom string, creationDateTo string, albumDateFrom string, albumDateTo string) ([]models.Artist, error) {
 	var filtered []models.Artist
+	var memberExists bool
+	var locationExists bool
+	var creationDateFromExists bool
+	var creationDateToExists bool
+	var albumDateFromExists bool
+	var albumDateToExists bool
 	for _, artist := range artists {
 		if len(members) > 0 {
-			members, err := strconv.Atoi(members)
-			if err != nil {
-				return nil, err
+			for _, member := range members{
+				memberI, err := strconv.Atoi(string(member))
+				if err != nil {
+					return nil, err
+				}
+				if len(artist.Members) == memberI {
+					memberExists = true
+				}
 			}
-			if len(artist.Members) != members {
-				continue
-			}
+		} else {
+			memberExists = true
 		}
 		if len(location) > 0 {
-			for _, location := range artist.Locationsr {
-			if location != location {
-				continue
+			for _, locations := range artist.Locationsr {
+			if locations == location {
+				locationExists = true
 			}
 		}
 		}
@@ -30,46 +40,53 @@ func filter(artists []models.Artist, members string,  location string, creationD
 			if err != nil {
 				return nil, err
 			}
-			if artist.CreationDate < from {
-					continue
+			if artist.CreationDate > from {
+				creationDateFromExists = true
 			}
 			
 		
 		}
 		if len(creationDateTo) > 0 {
-			to, err := strconv.Atoi( creationDateFrom)
+			to, err := strconv.Atoi(creationDateTo)
 			if err != nil {
 				return nil, err
 			}
-			if artist.CreationDate > to {
-					continue
+			if artist.CreationDate < to {
+				creationDateToExists = true
 				}
 		
 		}
 		if len(albumDateFrom) > 0 {
 			from, err := time.Parse("2006-01-02", albumDateFrom)
+			if err!= nil {
+                return nil, err
+            }
 			FirstAlbum, err := time.Parse("2006-01-02", artist.FirstAlbum)
-
 			if err != nil {
 				return nil, err
 			}
-			if FirstAlbum.Before(from) {
-				continue
+			if FirstAlbum.After(from) {
+				albumDateFromExists = true
 			}
 		
 		}
 		if len(albumDateTo) > 0 {
 			to, err := time.Parse("2006-01-02", albumDateTo)
+			if err != nil {
+				return nil, err
+			}
 			FirstAlbum, err := time.Parse("2006-01-02", artist.FirstAlbum)
 			if err != nil {
 				return nil, err
 			}
-			if FirstAlbum.After(to) {
-				continue
+			if FirstAlbum.Before(to) {
+				albumDateToExists = true
 			}
 		
 		}
-		filtered = append(filtered, artist)
-	}
+		if memberExists || locationExists || creationDateFromExists || creationDateToExists || albumDateFromExists || albumDateToExists {
+			filtered = append(filtered, artist)
+		}
+		}
 	return filtered, nil
 }

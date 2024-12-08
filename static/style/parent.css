@@ -56,6 +56,34 @@ body {
     transform: scale(1.05);
 }
 
+#filter {
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5); 
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+#filter:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); 
+}
+
+.filter {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #1a1a39;
+    color: white; 
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease; 
+}
+.filter:hover {
+    background-color: #24244d;
+    color: white;
+    transform: scale(1.05);
+}
 
 
 
