@@ -94,6 +94,5 @@ func Filter(artists []models.Artist, members []string, location string, creation
 			filtered = append(filtered, artist)
 		}
 	}
-	fmt.Println("Filtered: ", filtered)
 	return filtered, nil
 }
