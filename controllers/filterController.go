@@ -7,16 +7,23 @@ import (
 	"strings"
 )
 
+func isInRange(value, from, to int) bool {
+	if from > to {
+		from, to = to, from
+		return value >= to && value <= to
+	}
+	return value >= from && value <= to
+}
+
+
 func Filter(artists []models.Artist, members []string, location string, creationDateFrom string, creationDateTo string, albumDateFrom string, albumDateTo string) (any, error) {
 	var filtered []models.Artist
 
 	for _, artist := range artists {
 		memberExists := len(members) == 0 // Default to true if no member filter
 		locationExists := len(location) == 0
-		creationDateFromExists := len(creationDateFrom) == 0
-		creationDateToExists := len(creationDateTo) == 0
-		albumDateFromExists := len(albumDateFrom) == 0
-		albumDateToExists := len(albumDateTo) == 0
+		creationDateInRange := len(creationDateFrom) == 0
+		albumDateInRange := len(albumDateFrom) == 0
 		albumYearStr := artist.FirstAlbum[len(artist.FirstAlbum)-4:] // Extract last 4 characters as year
 		albumYear, err := strconv.Atoi(albumYearStr)
 		if err != nil {
@@ -30,7 +37,7 @@ func Filter(artists []models.Artist, members []string, location string, creation
 				}
 				if len(artist.Members) == memberI {
 					memberExists = true
-
+					break
 				}
 			}
 		} else {
@@ -40,59 +47,45 @@ func Filter(artists []models.Artist, members []string, location string, creation
 			for _, locations := range artist.Locationsr {
 				if strings.Contains(locations, location) {
 					locationExists = true
-
-				}
+					break
 			}
 		}
+	}
 
 		if len(creationDateFrom) > 0 && len(creationDateTo) > 0 {
 			from, err := strconv.Atoi(creationDateFrom)
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("invalid creationDateFrom format: %v", err)
 			}
 			to, err := strconv.Atoi(creationDateTo)
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("invalid creationDateTo format: %v", err)
 			}
-			if from < to {
-				if artist.CreationDate > from  && artist.CreationDate < to {
-					creationDateFromExists = true
-				}
-			} else {
-				if artist.CreationDate > to  && artist.CreationDate < from {
-                    creationDateFromExists = true
-                }
+			if isInRange(artist.CreationDate, from, to) {
+				creationDateInRange = true
 			}
-
 		}
 
 
-		if len(albumDateFrom) > 0  && len(albumDateTo) > 0 {
+		if len(albumDateFrom) > 0 && len(albumDateTo) > 0 {
 			from, err := strconv.Atoi(albumDateFrom)
 			if err != nil {
 				return nil, fmt.Errorf("invalid albumDateFrom format: %v", err)
 			}
 			to, err := strconv.Atoi(albumDateTo)
 			if err != nil {
-				return nil, fmt.Errorf("invalid albumDateFrom format: %v", err)
+				return nil, fmt.Errorf("invalid albumDateTo format: %v", err)
 			}
-			if from < to {
-				if albumYear > from  && albumYear < to {
-					albumDateFromExists = true
-				}
-			} else {
-				if albumYear > to  && albumYear < from {
-					albumDateFromExists = true
-				}
+			if isInRange(albumYear, from, to) {
+				albumDateInRange = true
 			}
-			
-
 		}
 
 
-		if memberExists && locationExists && creationDateFromExists && creationDateToExists && albumDateFromExists && albumDateToExists {
+		if memberExists && locationExists && creationDateInRange && albumDateInRange {
 			filtered = append(filtered, artist)
 		}
 	}
 	return filtered, nil
 }
+
