@@ -7,7 +7,16 @@ const artists = JSON.parse(artistDataScript.textContent);
 const uniqueLocations = new Set();
 const uniqueDates = new Set();  
 console.log(artists);
-
+artists.forEach((artist) => {
+artist.Locationsr.forEach((city) => {
+  if (!uniqueLocations.has(city)) {
+    uniqueLocations.add(city);
+    const locations = document.createElement("option");
+    locations.value = city;
+    locationSuggestion.appendChild(locations);
+  }
+});
+} );
 artists.forEach((artist) => {
   const artistName = document.createElement("option");
   artistName.value = artist.name;
@@ -41,14 +50,7 @@ artists.forEach((artist) => {
     }
   });
 
-  artist.Locationsr.forEach((city) => {
-    if (!uniqueLocations.has(city)) {
-      uniqueLocations.add(city);
-      const locations = document.createElement("option");
-      locations.value = city;
-      locationSuggestion.appendChild(locations);
-    }
-  });
+ 
 
 
   artist.ConcertDatesr.forEach((date) => {

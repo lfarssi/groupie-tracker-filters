@@ -85,6 +85,14 @@ body {
     transform: scale(1.05);
 }
 
+.members {
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5); 
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
 
 
 /* Header Section */
