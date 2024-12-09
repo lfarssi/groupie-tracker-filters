@@ -4,10 +4,11 @@ const locationSuggestion = document.getElementById("suggestions_location");
 // Get artist data from the embedded JSON script tag asynchronously
 const artistDataScript = document.getElementById("artistData");
 const artists = JSON.parse(artistDataScript.textContent);
+const searchArtist = [...artists]
 const uniqueLocations = new Set();
 const uniqueDates = new Set();  
 console.log(artists);
-artists.forEach((artist) => {
+searchArtist.forEach((artist) => {
 artist.Locationsr.forEach((city) => {
   if (!uniqueLocations.has(city)) {
     uniqueLocations.add(city);
@@ -17,7 +18,7 @@ artist.Locationsr.forEach((city) => {
   }
 });
 } );
-artists.forEach((artist) => {
+searchArtist.forEach((artist) => {
   const artistName = document.createElement("option");
   artistName.value = artist.name;
   artistName.innerHTML = "- Artist/Band";

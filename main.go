@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"groupie_tracker/database"
 	"groupie_tracker/models"
 	"groupie_tracker/routes"
@@ -13,9 +14,17 @@ func main() {
 		os.Exit(1)
 	}
 	var err error
-	database.Artists, err = models.GetArtists()
-	database.Locations, err = models.GetLocation()
-	database.Dates, err = models.GetDate()
+	go func () {
+		database.Artists, err = models.GetArtists()
+	}()
+	go func() {
+
+		database.Locations, err = models.GetLocation()
+	}()
+	go func() {
+
+		database.Dates, err = models.GetDate()
+	}()
 	for i := 0; i < len(database.Artists); i++ {
 		artist := &database.Artists[i]
 		if len(artist.Members) == 1 {
@@ -25,7 +34,7 @@ func main() {
 		}
 	}
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 	routes.Router()
 }

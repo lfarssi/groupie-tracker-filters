@@ -17,81 +17,84 @@
           <h1>Groupie Tracker</h1>
         </a>
       </div>
-      <div>
-        <form action="/" id="filterForm" method="GET">
-          <div>
-            <label for="member">members</label>
-            <input type="checkbox" title="member" name="member" class="members" value="1" />1
-            <input type="checkbox" title="member" name="member" class="members" value="2" />2
-            <input type="checkbox" title="member" name="member" class="members" value="3" />3
-            <input type="checkbox" title="member" name="member" class="members" value="4" />4
-            <input type="checkbox" title="member" name="member" class="members" value="5" />5
-            <input type="checkbox" title="member" name="member" class="members" value="6" />6
-            <input type="checkbox" title="member" name="member" class="members" value="7" />7
-            <input type="checkbox" title="member" name="member" class="members" value="8" />8
-            <br>  
-          </div>
-
-          <div>
-            <label for="album_date_from">album_date_from</label>
-            <input type="range" title="album_date_from" name="album_date_from" min="1950" value="1950" max="2024" id="album_date_from"/>
-            <span id="album_date_from_value"></span>
-          </div>
-          <div>
-            <label for="album_date_to">album date to</label>
-            <input type="range" title="album_date_to" name="album_date_to" min="1950" value="2024" max="2024" id="album_date_to"/>
-            <span id="album_date_to_value"></span>
-          </div>
-          <br>
-          <div>
-            <label for="creation_date_from">creation_date_from</label>
-            <input type="range" title="creation_date_from" name="creation_date_from"  value="1950" min="1950" max="2024" id="creation_date_from"/>
-            <span id="creation_date_from_value"></span>
-          </div>
-          <div>
-            <label for="creation_date_to">creation_date_to</label>
-            <input type="range" title="creation_date_to" name="creation_date_to" min="1950" value="2024" max="2024" id="creation_date_to"/>
-            <span id="creation_date_to_value"></span>
-            <br>
-          </div>
-          <div>
-            <input
-              type="text"
-              id="filter"
-              name="location"
-              list="suggestions_location"
-              placeholder="filter  an artist by location"
-              
-            />
-            <datalist id="suggestions_location">
-              
-            </datalist>
-            <br>
-          </div>
-
-          <button class="filter" type="submit"><i class="fa-solid fa-filter" title="submit"></i></button>
-          
-        </form>
-      </div>
-        <form action="/" id="searchForm" method="GET">
-          <input
-            type="text"
-            id="search"
-            name="search"
-            list="suggestions"
-            placeholder="Search for an artist"
-            required
-          />
-          <datalist id="suggestions">
-            
-          </datalist>
-          <button type="submit" class="search"><i class="fa-solid fa-magnifying-glass" title="submit"></i> </button>
-        </form>
-   
-
-  
+        
      
     </header>
+    <div class="searchForm">
+      <form action="/" id="searchForm" method="GET">
+        <input
+          type="text"
+          id="search"
+          name="search"
+          list="suggestions"
+          placeholder="Search for an artist"
+          required
+        />
+        <datalist id="suggestions">
+          
+        </datalist>
+        <button type="submit" class="search"><i class="fa-solid fa-magnifying-glass" title="submit"></i> </button>
+      </form>
+      <button id="toggleFilter" class="toggleFilter filter"><i class="fa-solid fa-filter" title="submit"></i></button>
+    </div>
+
+
+    <div>
+      <form action="/" id="filterForm" method="GET">
+        <div>
+          <label for="member">members</label>
+          <input type="checkbox" title="member" name="member" class="members" value="1" />1
+          <input type="checkbox" title="member" name="member" class="members" value="2" />2
+          <input type="checkbox" title="member" name="member" class="members" value="3" />3
+          <input type="checkbox" title="member" name="member" class="members" value="4" />4
+          <input type="checkbox" title="member" name="member" class="members" value="5" />5
+          <input type="checkbox" title="member" name="member" class="members" value="6" />6
+          <input type="checkbox" title="member" name="member" class="members" value="7" />7
+          <input type="checkbox" title="member" name="member" class="members" value="8" />8
+          <br>  
+        </div>
+
+        <div>
+          <label for="album_date_from">album_date_from</label>
+          <input type="range" title="album_date_from" name="album_date_from" min="1950" value="1950" max="2024" id="album_date_from"/>
+          <span id="album_date_from_value"></span>
+        </div>
+        <div>
+          <label for="album_date_to">album date to</label>
+          <input type="range" title="album_date_to" name="album_date_to" min="1950" value="2024" max="2024" id="album_date_to"/>
+          <span id="album_date_to_value"></span>
+        </div>
+        <br>
+        <div>
+          <label for="creation_date_from">creation_date_from</label>
+          <input type="range" title="creation_date_from" name="creation_date_from"  value="1950" min="1950" max="2024" id="creation_date_from"/>
+          <span id="creation_date_from_value"></span>
+        </div>
+        <div>
+          <label for="creation_date_to">creation_date_to</label>
+          <input type="range" title="creation_date_to" name="creation_date_to" min="1950" value="2024" max="2024" id="creation_date_to"/>
+          <span id="creation_date_to_value"></span>
+          <br>
+        </div>
+        <div>
+          <input
+            type="text"
+            id="filter"
+            name="location"
+            list="suggestions_location"
+            placeholder="filter  an artist by location"
+            
+          />
+          <datalist id="suggestions_location">
+            
+          </datalist>
+          <br>
+        </div>
+
+        <button class="filter" type="submit"><i class="fa-solid fa-filter" title="submit"></i></button>
+        
+      </form>
+    </div>
 
     
     <main class="main-content">
@@ -113,13 +116,13 @@
               valueDisplayElement.textContent = rangeElement.value ;
             });
           };
-
+      
           // Get each range input and its corresponding display span element
           updateRangeValue(document.getElementById("album_date_from"), document.getElementById("album_date_from_value"));
           updateRangeValue(document.getElementById("album_date_to"), document.getElementById("album_date_to_value"));
           updateRangeValue(document.getElementById("creation_date_from"), document.getElementById("creation_date_from_value"));
           updateRangeValue(document.getElementById("creation_date_to"), document.getElementById("creation_date_to_value"));
-
+      
           const form = document.getElementById("searchForm");
           const queryString = window.location.search;
           if (queryString.includes("search=")) {
@@ -127,8 +130,28 @@
           } else {
             form.style.display = "block"; // Show the form otherwise
           }
+      
+          // Toggle filter section visibility
+          const filterForm = document.getElementById("filterForm");
+          const toggleButton = document.getElementById("toggleFilter");
+      
+          toggleButton.addEventListener("click", () => {
+            if (filterForm.style.display === "none" || filterForm.style.display === "") {
+              filterForm.style.display = "block";
+              const icon = document.createElement("i");
+              toggleButton.appendChild(icon);
+            } else {
+              filterForm.style.display = "none";
+              const icon = document.createElement("i");
+              toggleButton.appendChild(icon);
+            }
+          });
+      
+          // Initialize filter form visibility (optional)
+          filterForm.style.display = "none"; // Start hidden
         });
       </script>
+      
   </main>
 
     <footer class="main-footer">

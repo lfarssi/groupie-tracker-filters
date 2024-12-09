@@ -22,17 +22,31 @@ body {
     color: white;
      line-height: 1.6;
 }
+.searchForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
 
 /* General search container styling */
 #search {
     margin-left: 20px;
     padding: 10px 20px;
     border-radius: 25px;
+    width: 400px;
     background-color: white;
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5); 
     transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
+.toggleFilter {
+    padding: 10px 20px;
+    margin: 10px;
+    color: white; 
+    outline: none;
+    transition: all 0.3s ease; 
+}
 #search:hover {
     transform: translateY(-2px); 
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); 
