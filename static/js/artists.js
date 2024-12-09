@@ -82,3 +82,11 @@ artistContainer.innerHTML = artists
             `
   )
   .join("");
+  if (artists.length == 0) {
+    artistContainer.innerHTML = `
+    <div class="no-results">
+        <h2>No results found</h2>
+        <p>Try to search for another artist</p>
+    </div>
+    `;
+  }

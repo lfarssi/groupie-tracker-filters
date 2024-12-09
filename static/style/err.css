@@ -16,9 +16,9 @@ h1 {
 .main-content-err {
     text-align: center;
     padding: 50px 20px;
+    min-height: 65vh;
     margin: 0 auto;
     margin-top: 50px;
-    border: white solid 1px;
     backdrop-filter: blur(5px);
     border-radius: 8px;
 }
