@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"groupie_tracker/database"
+	"groupie_tracker/models"
 	"net/http"
 )
 
@@ -28,13 +29,22 @@ func ArtistController(w http.ResponseWriter, r *http.Request) {
 	creationDateTo := r.URL.Query().Get("creation_date_to")
 	albumDateFrom := r.URL.Query().Get("album_date_from")
 	albumDateTo := r.URL.Query().Get("album_date_to")
+	data := struct {
+		Artists     []models.Artist
+		Suggestions []models.Artist
+	}{
+		Artists: artists,
+	}
 	if len(members) > 0 || len(location) > 0 || len(creationDateFrom) > 0 || len(creationDateTo) > 0 || len(albumDateFrom) > 0 || len(albumDateTo) > 0 {
-		data, _ := Filter(artists, members, location, creationDateFrom, creationDateTo, albumDateFrom, albumDateTo)
+		filteredArtists, _ := Filter(artists, members, location, creationDateFrom, creationDateTo, albumDateFrom, albumDateTo)
+		data.Artists = filteredArtists
 		ParseController(w, r, "index", data)
 	} else if len(search) > 0 {
-		data, _ := Search(artists, search)
+		searchedArtists, _ := Search(artists, search)
+		data.Artists = searchedArtists
 		ParseController(w, r, "index", data)
 	} else {
-		ParseController(w, r, "index", artists)
+		data.Artists = artists
+		ParseController(w, r, "index", data)
 	}
 }

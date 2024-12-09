@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func Search(artists []models.Artist, search string) (any, error) {
+func Search(artists []models.Artist, search string) ([]models.Artist, error) {
 	search = strings.ToLower(search)
 	searched := make([]models.Artist, 0)
 	uniqueArtists := make(map[int]struct{}) // To track unique artists by their Id

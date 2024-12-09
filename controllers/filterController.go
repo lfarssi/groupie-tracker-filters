@@ -16,7 +16,7 @@ func isInRange(value, from, to int) bool {
 }
 
 
-func Filter(artists []models.Artist, members []string, location string, creationDateFrom string, creationDateTo string, albumDateFrom string, albumDateTo string) (any, error) {
+func Filter(artists []models.Artist, members []string, location string, creationDateFrom string, creationDateTo string, albumDateFrom string, albumDateTo string) ([]models.Artist, error) {
 	var filtered []models.Artist
 
 	for _, artist := range artists {
