@@ -33,7 +33,7 @@ func ArtistController(w http.ResponseWriter, r *http.Request) {
 		Artists     []models.Artist
 		Suggestions []models.Artist
 	}{
-		Artists: artists,
+		Suggestions: artists,
 	}
 	if len(members) > 0 || len(location) > 0 || len(creationDateFrom) > 0 || len(creationDateTo) > 0 || len(albumDateFrom) > 0 || len(albumDateTo) > 0 {
 		filteredArtists, _ := Filter(artists, members, location, creationDateFrom, creationDateTo, albumDateFrom, albumDateTo)

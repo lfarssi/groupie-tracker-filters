@@ -101,9 +101,11 @@
       <div class="container" id="artistContainer">
           
       </div>
+      <script id="suggetionsData" type="application/json">
+        {{ .Suggestions}}
+      </script>
      
       <script id="artistData" type="application/json">
-          {{ .Suggestions}}
           {{ .Artists}}
       </script>
       <script src="/static/js/artists.js"></script>
@@ -125,13 +127,13 @@
           updateRangeValue(document.getElementById("creation_date_from"), document.getElementById("creation_date_from_value"));
           updateRangeValue(document.getElementById("creation_date_to"), document.getElementById("creation_date_to_value"));
       
-          const form = document.getElementById("searchForm");
-          const queryString = window.location.search;
-          if (queryString.includes("search=")) {
-            form.style.display = "none"; // Hide the form if there is a search query
-          } else {
-            form.style.display = "block"; // Show the form otherwise
-          }
+          //const form = document.getElementById("searchForm");
+          //const queryString = window.location.search;
+          //if (queryString.includes("search=")) {
+           // form.style.display = "none"; // Hide the form if there is a search query
+         // } else {
+           // form.style.display = "block"; // Show the form otherwise
+          //}
       
           // Toggle filter section visibility
           const filterForm = document.getElementById("filterForm");

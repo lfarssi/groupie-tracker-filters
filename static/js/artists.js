@@ -1,14 +1,15 @@
 const artistContainer = document.getElementById("artistContainer");
 const suggestion = document.getElementById("suggestions");
 const locationSuggestion = document.getElementById("suggestions_location");
-// Get artist data from the embedded JSON script tag asynchronously
+// Get artist data from the embedded JSON script tag asynchronously 
 const artistDataScript = document.getElementById("artistData");
+const suggestionsDataScript = document.getElementById("suggetionsData");
 const artists = JSON.parse(artistDataScript.textContent);
-const searchArtist = [...artists]
+const suggest = JSON.parse(suggestionsDataScript.textContent);
 const uniqueLocations = new Set();
 const uniqueDates = new Set();  
 console.log(artists);
-searchArtist.forEach((artist) => {
+suggest.forEach((artist) => {
 artist.Locationsr.forEach((city) => {
   if (!uniqueLocations.has(city)) {
     uniqueLocations.add(city);
@@ -18,7 +19,7 @@ artist.Locationsr.forEach((city) => {
   }
 });
 } );
-searchArtist.forEach((artist) => {
+suggest.forEach((artist) => {
   const artistName = document.createElement("option");
   artistName.value = artist.name;
   artistName.innerHTML = "- Artist/Band";
