@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Groupie Tracker</title>
     <link rel="stylesheet" href="/static/style/parent.css" />
-    <link rel="stylesheet" href="/static/style/cards.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"  />
-
-
+    <link rel="stylesheet" href="/static/style/cards.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
   </head>
   <body>
     <header class="main-header">
@@ -17,8 +18,6 @@
           <h1>Groupie Tracker</h1>
         </a>
       </div>
-        
-     
     </header>
     <div class="searchForm">
       <form action="/" id="searchForm" method="GET">
@@ -30,53 +29,134 @@
           placeholder="Search for an artist"
           required
         />
-        <datalist id="suggestions">
-          
-        </datalist>
-        <button type="submit" class="search"><i class="fa-solid fa-magnifying-glass" title="submit"></i> </button>
+        <datalist id="suggestions"> </datalist>
+        <button type="submit" class="search">
+          <i class="fa-solid fa-magnifying-glass" title="submit"></i>
+        </button>
       </form>
-      <button id="toggleFilter" class="toggleFilter filter"><i class="fa-solid fa-filter" title="submit"></i></button>
+      <button id="toggleFilter" class="toggleFilter filter">
+        <i class="fa-solid fa-filter" title="submit"></i>
+      </button>
     </div>
-
 
     <div>
       <form action="/" id="filterForm" method="GET">
         <div>
           <label for="member">members</label>
-          <input type="checkbox" title="member" name="member" class="members" value="1" />1
-          <input type="checkbox" title="member" name="member" class="members" value="2" />2
-          <input type="checkbox" title="member" name="member" class="members" value="3" />3
-          <input type="checkbox" title="member" name="member" class="members" value="4" />4
-          <input type="checkbox" title="member" name="member" class="members" value="5" />5
-          <input type="checkbox" title="member" name="member" class="members" value="6" />6
-          <input type="checkbox" title="member" name="member" class="members" value="7" />7
-          <input type="checkbox" title="member" name="member" class="members" value="8" />8
-          <br>  
+          <input
+            type="checkbox"
+            title="member"
+            name="member"
+            class="members"
+            value="1"
+          />1
+          <input
+            type="checkbox"
+            title="member"
+            name="member"
+            class="members"
+            value="2"
+          />2
+          <input
+            type="checkbox"
+            title="member"
+            name="member"
+            class="members"
+            value="3"
+          />3
+          <input
+            type="checkbox"
+            title="member"
+            name="member"
+            class="members"
+            value="4"
+          />4
+          <input
+            type="checkbox"
+            title="member"
+            name="member"
+            class="members"
+            value="5"
+          />5
+          <input
+            type="checkbox"
+            title="member"
+            name="member"
+            class="members"
+            value="6"
+          />6
+          <input
+            type="checkbox"
+            title="member"
+            name="member"
+            class="members"
+            value="7"
+          />7
+          <input
+            type="checkbox"
+            title="member"
+            name="member"
+            class="members"
+            value="8"
+          />8
+          <br />
         </div>
 
         <div>
           <label for="album_date_from">album_date_from</label>
-          <input type="range" title="album_date_from" name="album_date_from" min="1950" value="1950" max="2025" id="album_date_from"/>
+          <input
+            type="range"
+            title="album_date_from"
+            name="album_date_from"
+            min="1950"
+            value="1950"
+            max="2025"
+            id="album_date_from"
+          />
           <span id="album_date_from_value"></span>
         </div>
         <div>
           <label for="album_date_to">album date to</label>
-          <input type="range" title="album_date_to" name="album_date_to" min="1950" value="2025" max="2025" id="album_date_to"/>
+          <input
+            type="range"
+            title="album_date_to"
+            name="album_date_to"
+            min="1950"
+            value="2025"
+            max="2025"
+            id="album_date_to"
+          />
           <span id="album_date_to_value"></span>
         </div>
-        <br>
-        <hr>
-        <br>
+        <br />
+        <hr />
+        <br />
         <div>
           <label for="creation_date_from">creation_date_from</label>
-          <input type="range" title="creation_date_from" name="creation_date_from"  value="1950" min="1950" max="2025" id="creation_date_from"/>
+          <input
+            type="range"
+            title="creation_date_from"
+            name="creation_date_from"
+            value="1950"
+            min="1950"
+            max="2025"
+            id="creation_date_from"
+          />
           <span id="creation_date_from_value"></span>
         </div>
         <div>
           <label for="creation_date_to">creation_date_to</label>
-          <input type="range" title="creation_date_to" name="creation_date_to" min="1950" value="2025" max="2025" id="creation_date_to"/>
+          <input
+            type="range"
+            title="creation_date_to"
+            name="creation_date_to"
+            min="1950"
+            value="2025"
+            max="2025"
+            id="creation_date_to"
+          />
           <span id="creation_date_to_value"></span>
-          <br>
+          <br />
         </div>
         <div>
           <input
@@ -85,30 +165,25 @@
             name="location"
             list="suggestions_location"
             placeholder="filter  an artist by location"
-            
           />
-          <datalist id="suggestions_location">
-            
-          </datalist>
-          <br>
+          <datalist id="suggestions_location"> </datalist>
+          <br />
         </div>
 
-        <button class="filter" type="submit"><i class="fa-solid fa-filter" title="submit"></i></button>
-        
+        <button class="filter" type="submit">
+          <i class="fa-solid fa-filter" title="submit"></i>
+        </button>
       </form>
     </div>
 
-    
     <main class="main-content">
-      <div class="container" id="artistContainer">
-          
-      </div>
+      <div class="container" id="artistContainer"></div>
       <script id="suggetionsData" type="application/json">
         {{ .Suggestions}}
       </script>
-     
+
       <script id="artistData" type="application/json">
-          {{ .Artists}}
+        {{ .Artists}}
       </script>
       <script src="/static/js/artists.js"></script>
       <script>
@@ -116,41 +191,97 @@
           const updateRangeValue = (rangeElement, valueDisplayElement) => {
             // Set initial value display
             valueDisplayElement.textContent = rangeElement.value;
-            
+
             // Update value display when the range input is changed
-            rangeElement.addEventListener('input', () => {
-              valueDisplayElement.textContent = rangeElement.value ;
+            rangeElement.addEventListener("input", () => {
+              valueDisplayElement.textContent = rangeElement.value;
             });
           };
-      
-          // Get each range input and its corresponding display span element
-          updateRangeValue(document.getElementById("album_date_from"), document.getElementById("album_date_from_value"));
-          updateRangeValue(document.getElementById("album_date_to"), document.getElementById("album_date_to_value"));
-          updateRangeValue(document.getElementById("creation_date_from"), document.getElementById("creation_date_from_value"));
-          updateRangeValue(document.getElementById("creation_date_to"), document.getElementById("creation_date_to_value"));
-          
+
+          const albumDateFrom = document.getElementById("album_date_from");
+          const albumDateTo = document.getElementById("album_date_to");
+          const creationDateFrom =
+            document.getElementById("creation_date_from");
+          const creationDateTo = document.getElementById("creation_date_to");
+
+          const albumDateFromValue = document.getElementById(
+            "album_date_from_value"
+          );
+          const albumDateToValue = document.getElementById(
+            "album_date_to_value"
+          );
+          const creationDateFromValue = document.getElementById(
+            "creation_date_from_value"
+          );
+          const creationDateToValue = document.getElementById(
+            "creation_date_to_value"
+          );
+
+          updateRangeValue(albumDateFrom, albumDateFromValue);
+          updateRangeValue(albumDateTo, albumDateToValue);
+          updateRangeValue(creationDateFrom, creationDateFromValue);
+          updateRangeValue(creationDateTo, creationDateToValue);
+
+          const enforceRangeLimits = (
+            fromElement,
+            toElement,
+            fromValueElement,
+            toValueElement
+          ) => {
+            let lastValidFrom = parseInt(fromElement.value);
+            let lastValidTo = parseInt(toElement.value);
+
+            fromElement.addEventListener("input", () => {
+              const fromValue = parseInt(fromElement.value);
+              if (fromValue > lastValidTo) {
+                fromElement.value = lastValidFrom; // Restore last valid value
+                fromValueElement.textContent = lastValidFrom; // Update span to reflect valid value
+              } else {
+                lastValidFrom = fromValue; // Update last valid value
+                fromValueElement.textContent = fromValue; // Update span to reflect current value
+              }
+            });
+
+            toElement.addEventListener("input", () => {
+              const toValue = parseInt(toElement.value);
+              if (toValue < lastValidFrom) {
+                toElement.value = lastValidTo; // Restore last valid value
+                toValueElement.textContent = lastValidTo; // Update span to reflect valid value
+              } else {
+                lastValidTo = toValue; // Update last valid value
+                toValueElement.textContent = toValue; // Update span to reflect current value
+              }
+            });
+          };
+
+          // Apply the blocking logic to album and creation dates
+          enforceRangeLimits(
+            albumDateFrom,
+            albumDateTo,
+            albumDateFromValue,
+            albumDateToValue
+          );
+          enforceRangeLimits(
+            creationDateFrom,
+            creationDateTo,
+            creationDateFromValue,
+            creationDateToValue
+          );
+
           // Toggle filter section visibility
           const filterForm = document.getElementById("filterForm");
           const toggleButton = document.getElementById("toggleFilter");
-      
+
           toggleButton.addEventListener("click", () => {
-            if (filterForm.style.display === "none" || filterForm.style.display === "") {
-              filterForm.style.display = "block";
-              const icon = document.createElement("i");
-              toggleButton.appendChild(icon);
-            } else {
-              filterForm.style.display = "none";
-              const icon = document.createElement("i");
-              toggleButton.appendChild(icon);
-            }
+            filterForm.style.display =
+              filterForm.style.display === "block" ? "none" : "block";
           });
-      
-          // Initialize filter form visibility (optional)
+
+          // Initialize filter form visibility
           filterForm.style.display = "none"; // Start hidden
         });
       </script>
-      
-  </main>
+    </main>
 
     <footer class="main-footer">
       <p>&copy; 2024 Groupie Tracker | All Rights Reserved</p>
