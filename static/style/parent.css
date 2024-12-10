@@ -222,6 +222,9 @@ html {
         flex-direction: column;
         text-align: center;
     }
+    #search {
+        width: 175px;
+    }
 
     .main-nav {
         margin-top: 20px;
