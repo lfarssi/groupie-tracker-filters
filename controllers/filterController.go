@@ -59,8 +59,10 @@ func Filter(artists []models.Artist, members []string, location string, creation
 			if err != nil {
 				return nil, fmt.Errorf("invalid creationDateTo format: %v", err)
 			}
-			if artist.CreationDate >= from || artist.CreationDate <= to {
+			if artist.CreationDate >= from && artist.CreationDate <= to {
 				creationDateInRange = true
+			} else {
+				creationDateInRange = false
 			}
 		}
 
@@ -73,8 +75,10 @@ func Filter(artists []models.Artist, members []string, location string, creation
 			if err != nil {
 				return nil, fmt.Errorf("invalid albumDateTo format: %v", err)
 			}
-			if albumYear >= from || albumYear <= to {
+			if albumYear >= from && albumYear <= to {
 				albumDateInRange = true
+			} else {
+				albumDateInRange = false
 			}
 		}
 
