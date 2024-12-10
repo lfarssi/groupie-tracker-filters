@@ -60,9 +60,13 @@ func Filter(artists []models.Artist, members []string, location string, creation
 				return nil, fmt.Errorf("invalid creationDateFrom format: %v", err)
 			}
 			to, err := strconv.Atoi(creationDateTo)
-			if err != nil {
+			if err != nil  {
 				return nil, fmt.Errorf("invalid creationDateTo format: %v", err)
 			}
+			if (from < 1950 || from > 2025) || (to < 1950 || to > 2025) {
+                return nil, fmt.Errorf("invalid creationDateTo format: %v", err)
+            }
+			
 			if artist.CreationDate >= from && artist.CreationDate <= to {
 				creationDateInRange = true
 			} else {
@@ -79,6 +83,9 @@ func Filter(artists []models.Artist, members []string, location string, creation
 			if err != nil {
 				return nil, fmt.Errorf("invalid albumDateTo format: %v", err)
 			}
+			if (from < 1950 || from > 2025) || (to < 1950 || to > 2025) {
+                return nil, fmt.Errorf("invalid albumDateTo format: %v", err)
+            }
 			if albumYear >= from && albumYear <= to {
 				albumDateInRange = true
 			} else {
