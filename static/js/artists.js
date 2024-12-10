@@ -5,44 +5,37 @@ const locationSuggestion = document.getElementById("suggestions_location");
 const artistDataScript = document.getElementById("artistData");
 const suggestionsDataScript = document.getElementById("suggetionsData");
 const artists = JSON.parse(artistDataScript.textContent);
-const suggest = JSON.parse(suggestionsDataScript.textContent);
+const suggests = JSON.parse(suggestionsDataScript.textContent);
 const uniqueLocations = new Set();
-const uniqueDates = new Set();  
+const uniqueDates = new Set(); 
+const uniqueLocationsFilter = new Set()
+
 console.log(artists);
-suggest.forEach((artist) => {
-artist.Locationsr.forEach((city) => {
-  if (!uniqueLocations.has(city)) {
-    uniqueLocations.add(city);
-    const locations = document.createElement("option");
-    locations.value = city;
-    locationSuggestion.appendChild(locations);
-  }
-});
-} );
-suggest.forEach((artist) => {
+
+suggests.forEach((suggest) => {
   const artistName = document.createElement("option");
-  artistName.value = artist.name;
+  artistName.value = suggest.name;
   artistName.innerHTML = "- Artist/Band";
   suggestion.appendChild(artistName);
 
   const firstAlbum = document.createElement("option");
-  firstAlbum.value = artist.firstAlbum;
+  firstAlbum.value = suggest.firstAlbum;
   firstAlbum.innerHTML = "- First Album";
   suggestion.appendChild(firstAlbum);
 
   const creationDate = document.createElement("option");
-  creationDate.value = artist.creationDate;
+  creationDate.value = suggest.creationDate;
   creationDate.innerHTML = "- Creation Date";
   suggestion.appendChild(creationDate);
 
-  artist.members.forEach((member) => {
+  suggest.members.forEach((member) => {
     const members = document.createElement("option");
     members.value = member;
     members.innerHTML = "- Member";
     suggestion.appendChild(members);
   });
 
-  artist.Locationsr.forEach((city) => {
+  suggest.Locationsr.forEach((city) => {
     if (!uniqueLocations.has(city)) {
       uniqueLocations.add(city);
       const locations = document.createElement("option");
@@ -55,7 +48,7 @@ suggest.forEach((artist) => {
  
 
 
-  artist.ConcertDatesr.forEach((date) => {
+  suggest.ConcertDatesr.forEach((date) => {
     if (!uniqueDates.has(date)) {
       uniqueDates.add(date);
       const dates = document.createElement("option");
@@ -66,6 +59,17 @@ suggest.forEach((artist) => {
   });
 });
 
+suggests.forEach((suggest) => {
+  suggest.Locationsr.forEach((city) => {
+    if (!uniqueLocationsFilter.has(city)) {
+      uniqueLocationsFilter.add(city);
+      const locations = document.createElement("option");
+      locations.value = city;
+      locations.textContent = "- Location";
+      locationSuggestion.appendChild(locations);
+    }
+  });
+  } );
 // Render artists in the container
 artistContainer.innerHTML = artists
   .map(

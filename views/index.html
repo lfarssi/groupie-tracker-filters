@@ -65,6 +65,8 @@
           <span id="album_date_to_value"></span>
         </div>
         <br>
+        <hr>
+        <br>
         <div>
           <label for="creation_date_from">creation_date_from</label>
           <input type="range" title="creation_date_from" name="creation_date_from"  value="1950" min="1950" max="2024" id="creation_date_from"/>
@@ -126,15 +128,7 @@
           updateRangeValue(document.getElementById("album_date_to"), document.getElementById("album_date_to_value"));
           updateRangeValue(document.getElementById("creation_date_from"), document.getElementById("creation_date_from_value"));
           updateRangeValue(document.getElementById("creation_date_to"), document.getElementById("creation_date_to_value"));
-      
-          //const form = document.getElementById("searchForm");
-          //const queryString = window.location.search;
-          //if (queryString.includes("search=")) {
-           // form.style.display = "none"; // Hide the form if there is a search query
-         // } else {
-           // form.style.display = "block"; // Show the form otherwise
-          //}
-      
+          
           // Toggle filter section visibility
           const filterForm = document.getElementById("filterForm");
           const toggleButton = document.getElementById("toggleFilter");

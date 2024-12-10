@@ -7,14 +7,13 @@ import (
 	"strings"
 )
 
-func isInRange(value, from, to int) bool {
-	if from > to {
-		from, to = to, from
-		return value >= to && value <= to
-	}
-	return value >= from && value <= to
-}
-
+// func isInRange(value, from, to int) bool {
+// 	if from > to {
+// 		from, to = to, from
+// 		return value >= to && value <= to
+// 	}
+// 	return value >= from && value <= to
+// }
 
 func Filter(artists []models.Artist, members []string, location string, creationDateFrom string, creationDateTo string, albumDateFrom string, albumDateTo string) ([]models.Artist, error) {
 	var filtered []models.Artist
@@ -48,10 +47,9 @@ func Filter(artists []models.Artist, members []string, location string, creation
 				if strings.Contains(locations, location) {
 					locationExists = true
 					break
+				}
 			}
 		}
-	}
-
 		if len(creationDateFrom) > 0 && len(creationDateTo) > 0 {
 			from, err := strconv.Atoi(creationDateFrom)
 			if err != nil {
@@ -61,11 +59,10 @@ func Filter(artists []models.Artist, members []string, location string, creation
 			if err != nil {
 				return nil, fmt.Errorf("invalid creationDateTo format: %v", err)
 			}
-			if isInRange(artist.CreationDate, from, to) {
+			if artist.CreationDate >= from || artist.CreationDate <= to {
 				creationDateInRange = true
 			}
 		}
-
 
 		if len(albumDateFrom) > 0 && len(albumDateTo) > 0 {
 			from, err := strconv.Atoi(albumDateFrom)
@@ -76,11 +73,10 @@ func Filter(artists []models.Artist, members []string, location string, creation
 			if err != nil {
 				return nil, fmt.Errorf("invalid albumDateTo format: %v", err)
 			}
-			if isInRange(albumYear, from, to) {
+			if albumYear >= from || albumYear <= to {
 				albumDateInRange = true
 			}
 		}
-
 
 		if memberExists && locationExists && creationDateInRange && albumDateInRange {
 			filtered = append(filtered, artist)
@@ -88,4 +84,3 @@ func Filter(artists []models.Artist, members []string, location string, creation
 	}
 	return filtered, nil
 }
-
