@@ -23,13 +23,13 @@ func ArtistController(w http.ResponseWriter, r *http.Request) {
 		artists[i].ConcertDatesr = dates.Index[i].Dates
 	}
 	search := r.URL.Query().Get("search")
-	if len(search) > 50 {
+	if len(search) > 500 {
 		ErrorController(w, r, http.StatusRequestEntityTooLarge)
 		return
 	}
 	members := r.URL.Query()["member"]
 	location := r.URL.Query().Get("location")
-	if len(location) > 50 {
+	if len(location) > 500 {
 		ErrorController(w, r, http.StatusRequestEntityTooLarge)
 		return
 	}
