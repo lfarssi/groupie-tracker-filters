@@ -37,6 +37,8 @@ func Filter(artists []models.Artist, members []string, location string, creation
 				if len(artist.Members) == memberI {
 					memberExists = true
 					break
+				} else {
+					memberExists = false
 				}
 			}
 		} else {
@@ -47,6 +49,8 @@ func Filter(artists []models.Artist, members []string, location string, creation
 				if strings.Contains(locations, location) {
 					locationExists = true
 					break
+				} else {
+					locationExists = false
 				}
 			}
 		}
