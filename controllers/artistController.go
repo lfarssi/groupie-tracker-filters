@@ -40,7 +40,7 @@ func ArtistController(w http.ResponseWriter, r *http.Request) {
 		data.Artists = filteredArtists
 		if len(data.Artists) == 0 {
 			ErrorController(w, r, http.StatusNotFound)
-            return
+			return
 		}
 		ParseController(w, r, "index", data)
 	} else if len(search) > 0 {

@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"encoding/json"
-	"groupie_tracker/database"
 	"groupie_tracker/models"
 	"html/template"
 	"net/http"
@@ -33,13 +32,9 @@ func ArtistDetailController(w http.ResponseWriter, r *http.Request) {
 		ErrorController(w, r, http.StatusBadRequest)
 		return
 	}
-	if id <= 0 || id > len(database.Artists) {
-		ErrorController(w, r, http.StatusNotFound)
-		return
-	}
 	artist, err := models.ArtistById(id)
 	if err != nil {
-		ErrorController(w, r, http.StatusInternalServerError)
+		ErrorController(w, r, http.StatusNotFound)
 		return
 	}
 
