@@ -86,6 +86,7 @@ artistContainer.innerHTML = artists
             `
   )
   .join("");
+  
   if (artists.length == 0) {
     artistContainer.innerHTML = `
     <div class="no-results">

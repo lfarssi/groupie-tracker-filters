@@ -38,6 +38,10 @@ func ArtistController(w http.ResponseWriter, r *http.Request) {
 	if len(members) > 0 || len(location) > 0 || len(creationDateFrom) > 0 || len(creationDateTo) > 0 || len(albumDateFrom) > 0 || len(albumDateTo) > 0 {
 		filteredArtists, _ := Filter(artists, members, location, creationDateFrom, creationDateTo, albumDateFrom, albumDateTo)
 		data.Artists = filteredArtists
+		if len(data.Artists) == 0 {
+			ErrorController(w, r, http.StatusNotFound)
+            return
+		}
 		ParseController(w, r, "index", data)
 	} else if len(search) > 0 {
 		searchedArtists, _ := Search(artists, search)
